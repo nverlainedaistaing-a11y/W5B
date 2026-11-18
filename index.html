@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verlaine Daistaing Ntengang | Developer Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="preview-shell" data-view="desktop">
+
+  <header class="preview-toolbar" id="preview-toolbar">
+    <div class="view-options" role="group" aria-label="Portfolio preview size">
+
+      <button type="button" class="view-button"
+              data-view="desktop" aria-pressed="true">
+        <img src="images/desktop.png" alt="">
+        <span>Desktop</span>
+      </button>
+
+      <button type="button" class="view-button"
+              data-view="tablet" aria-pressed="false">
+        <img src="images/tablet.png" alt="">
+        <span>Tablet</span>
+      </button>
+
+      <button type="button" class="view-button"
+              data-view="phone" aria-pressed="false">
+        <img src="images/phone.png" alt="">
+        <span>Mobile phone</span>
+      </button>
+
+    </div>
+
+    <button type="button" class="hide-toolbar" id="hide-toolbar"
+            aria-label="Hide preview toolbar" title="Hide preview toolbar">
+      ×
+    </button>
+  </header>
+
+  <button type="button" class="restore-toolbar" id="restore-toolbar"
+          aria-controls="preview-toolbar" hidden>
+    Show views
+  </button>
+
+  <main class="preview-stage">
+    <iframe class="preview-window"
+            src="portfolio.html"
+            title="Verlaine Ntengang’s developer portfolio">
+    </iframe>
+  </main>
+
+  <dialog class="view-notice" id="view-notice"
+          aria-labelledby="view-message">
+    <p id="view-message"></p>
+    <form method="dialog">
+      <button type="submit" autofocus>Close</button>
+    </form>
+  </dialog>
+
+  <script>
+    const toolbar = document.querySelector("#preview-toolbar");
+    const hideButton = document.querySelector("#hide-toolbar");
+    const restoreButton = document.querySelector("#restore-toolbar");
+    const viewButtons = document.querySelectorAll(".view-button");
+    const notice = document.querySelector("#view-notice");
+    const message = document.querySelector("#view-message");
+
+    const messages = {
+      desktop: "Enjoy Your Desktop view",
+      tablet: "Enjoy Your Tablette view",
+      phone: "Enjoy Your Mobile phone view"
+    };
+
+    let noticeTimer;
+
+    viewButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedView = button.dataset.view;
+        document.body.dataset.view = selectedView;
+
+        viewButtons.forEach((option) => {
+          option.setAttribute("aria-pressed", String(option === button));
+        });
+
+        message.textContent = messages[selectedView];
+        notice.showModal();
+        noticeTimer = window.setTimeout(() => notice.close(), 1600);
+      });
+    });
+
+    notice.addEventListener("close", () => {
+      window.clearTimeout(noticeTimer);
+    });
+
+    hideButton.addEventListener("click", () => {
+      toolbar.hidden = true;
+      restoreButton.hidden = false;
+      restoreButton.focus();
+    });
+
+    restoreButton.addEventListener("click", () => {
+      toolbar.hidden = false;
+      restoreButton.hidden = true;
+      toolbar.querySelector('[aria-pressed="true"]').focus();
+    });
+  </script>
+
+</body>
+</html>

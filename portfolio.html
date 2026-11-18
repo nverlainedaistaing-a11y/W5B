@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verlaine Ntengang | Developer Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="portfolio-page">
+    <header class="site-header">
+      <a class="logo" href="#portfolio" aria-label="Verlaine Daistaing Ntengang home">
+        V.D.N<span>.</span>
+      </a>
+
+      <button class="menu-button" type="button"
+              aria-controls="drawer" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <dialog id="drawer" class="drawer" aria-label="Portfolio navigation">
+      <form method="dialog">
+        <button class="close-button" aria-label="Close menu">×</button>
+      </form>
+      <nav>
+        <a href="#projects">Projects</a><!-- my additional content  -->
+        <a href="#portfolio">My Portfolio</a>
+        <a href="#about">About Me</a>
+      </nav>
+    </dialog>
+
+    <main>
+      <!-- TASK 3: PROFILE AND SKILLS -->
+
+      <!-- TASK 4: PROJECTS //my additional content -->
+    </main>
+
+    <!-- TASK 5: FOOTER -->
+  </div>
+
+  <!-- TASK 5: FLOATING CONTACT BOX // my additional content -->
+
+  <script>
+    const drawer = document.querySelector("#drawer");
+    const menuButton = document.querySelector(".menu-button");
+
+    menuButton.addEventListener("click", () => {
+      drawer.showModal();
+    });
+
+    drawer.querySelectorAll("nav a").forEach((link) => {
+      link.addEventListener("click", () => drawer.close());
+    });
+
+    drawer.addEventListener("click", (event) => {
+      if (event.target !== drawer) return;
+
+      const bounds = drawer.getBoundingClientRect();
+      const outside =
+        event.clientX < bounds.left ||
+        event.clientX >= bounds.right ||
+        event.clientY < bounds.top ||
+        event.clientY >= bounds.bottom;
+
+      if (outside) drawer.close();
+    });
+
+    // TASK 5: MESSAGE PREVIEW
+    
+  </script>
+</body>
+</html>
