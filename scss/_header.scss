@@ -1,0 +1,344 @@
+.sr-only,
+.toolbar input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 0.55rem;
+  background: #f2f2f2;
+  box-shadow: 0 1px 4px #0002;
+
+  label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  label:has(input:checked) { background: #cfe5f5; }
+  label:focus-within { outline: 2px solid #1875b8; }
+}
+
+.device {
+  display: inline-block;
+  border: 2px solid #535d65;
+  border-radius: 2px;
+}
+
+.desktop { width: 23px; height: 15px; }
+.tablet  { width: 14px; height: 18px; }
+.phone   { width: 10px; height: 16px; }
+
+.portfolio-page {
+  container-type: inline-size;
+  width: 100%;
+  min-height: 100vh;
+  margin-inline: auto;
+  background: white;
+}
+
+body:has(input[value="tablet"]:checked) .portfolio-page {
+  max-width: 768px;
+}
+
+body:has(input[value="phone"]:checked) .portfolio-page {
+  max-width: 390px;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 7%;
+}
+
+.logo {
+  color: $ink;
+  font-size: 1.65rem;
+  font-weight: 800;
+  text-decoration: none;
+
+  span { color: $orange; }
+}
+
+.menu-button {
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  padding: 8px;
+  background: transparent;
+  cursor: pointer;
+
+  span {
+    height: 3px;
+    background: $orange;
+  }
+}
+
+.drawer {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 250px;
+  max-width: 85vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  border: 0;
+  padding: 1rem;
+  color: white;
+  background: #121416;
+
+  &::backdrop { background: #000a; }
+
+  form { text-align: right; }
+
+  nav {
+    display: grid;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.close-button {
+  border: 0;
+  color: white;
+  background: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .drawer[open] { animation: open-drawer 180ms ease-out; }
+
+  @keyframes open-drawer {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+}
+/* this side is for the outer page to hold the toolbar and gives the remaining height
+   to the portfolio. Scrolling happens inside the preview. */
+body.preview-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  margin: 0;
+  overflow: hidden;
+  background: #e6e8eb;
+}
+
+.preview-toolbar {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 66px;
+  padding: 6px 48px;
+  border-bottom: 1px solid #d4d8dc;
+  background: #f8f9fa;
+}
+
+.view-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.view-button {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 1px;
+  min-width: 74px;
+  padding: 3px 9px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #374151;
+  font: inherit;
+  cursor: pointer;
+
+  img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  span {
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  &:hover {
+    background: #e9eef2;
+  }
+
+  &[aria-pressed="true"] {
+    border-color: #a6cbe3;
+    background: #dceefa;
+    color: #163e59;
+  }
+}
+
+.hide-toolbar {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #48515a;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover {
+    background: #e5e9ed;
+  }
+}
+
+/* Floating control takes up no space in the page layout. */
+.restore-toolbar {
+  position: fixed;
+  z-index: 3;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 14px;
+  border: 1px solid #b9c3ca;
+  border-radius: 20px;
+  background: white;
+  color: #24323d;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0002;
+}
+
+.preview-toolbar[hidden],
+.restore-toolbar[hidden] {
+  display: none;
+}
+
+.preview-stage {
+  display: flex;
+  flex: 1 1 0;
+  justify-content: center;
+  min-height: 0;
+  width: 100%;
+}
+
+.preview-window {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  border: 0;
+  background: white;
+}
+
+.preview-shell[data-view="tablet"] .preview-window {
+  max-width: 768px;
+}
+
+.preview-shell[data-view="phone"] .preview-window {
+  max-width: 390px;
+}
+
+/* This dialog belongs to the outer page and confirms the view choice. */
+.view-notice {
+  width: 19rem;
+  max-width: calc(100% - 2rem);
+  margin: auto;
+  padding: 1.35rem;
+  border: 1px solid #d6dce1;
+  border-radius: 14px;
+  background: white;
+  color: #19252e;
+  text-align: center;
+  box-shadow: 0 12px 40px #0003;
+
+  &::backdrop {
+    background: rgba(20, 30, 40, 0.22);
+  }
+
+  p {
+    margin: 0 0 0.8rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  button {
+    border: 0;
+    border-radius: 6px;
+    padding: 0.4rem 1rem;
+    background: #24323d;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 380px) {
+  .preview-toolbar {
+    padding-inline: 38px;
+  }
+
+  .view-options {
+    gap: 2px;
+  }
+
+  .view-button {
+    min-width: 58px;
+    padding-inline: 4px;
+  }
+}
+/*This is to control the fade animation for the restore toolbar */
+@keyframes show-views-fade {
+  0%, 15%   { opacity: 1; }
+  45%, 60%  { opacity: 0; }
+  90%, 100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .restore-toolbar:not([hidden]) {
+    animation: show-views-fade 6s ease-in-out infinite;
+  }
+
+  .restore-toolbar:hover,
+  .restore-toolbar:focus-visible {
+    animation: none;
+    opacity: 1;
+  }
+}
