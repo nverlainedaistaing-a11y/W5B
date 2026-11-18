@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: #17191b;
+  background: #d5d9dc;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6; }
+
+h1, h2, h3, p {
+  margin: 0 0 1rem; }
+
+h1, h2 {
+  line-height: 1.05;
+  letter-spacing: -0.045em; }
+
+img {
+  display: block;
+  max-width: 100%; }
+
+a {
+  color: inherit; }
+
+button, input, textarea, select {
+  font: inherit; }
+
+:focus-visible {
+  outline: 3px solid #1875b8;
+  outline-offset: 3px; }
