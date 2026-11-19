@@ -553,4 +553,11 @@ button, input, textarea, select {
   .site-footer h2 {
     font-size: 3.6rem; } }
 
-/* Project Section --My additional content achievements*/
+@media (max-width: 420px) {
+  .achievement-controls button {
+    min-width: 44px;
+    min-height: 44px; }
+  .build-achievements > h3 {
+    font-size: 1.75rem; }
+  .site-footer {
+    padding-bottom: 7rem; } }
