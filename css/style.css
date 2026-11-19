@@ -300,6 +300,96 @@ body.preview-shell {
     animation: none;
     opacity: 1; } }
 
+.site-footer {
+  display: grid;
+  gap: 2rem;
+  padding: 3.5rem 7% 6rem;
+  background: #292e33;
+  color: white; }
+  .site-footer .footer-intro {
+    max-width: 31rem; }
+  .site-footer h2 {
+    margin-bottom: 1rem; }
+  .site-footer small {
+    grid-column: 1 / -1;
+    padding-top: 1rem;
+    border-top: 1px solid #687178; }
+
+.contact-form {
+  display: grid;
+  align-content: start;
+  gap: 0.8rem;
+  min-width: 0; }
+  .contact-form label {
+    display: grid;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 700; }
+  .contact-form input, .contact-form select, .contact-form textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 0.65rem;
+    border: 1px solid #aeb5b9;
+    border-radius: 4px;
+    background: white;
+    color: #17191b;
+    font: inherit;
+    font-weight: 400; }
+  .contact-form textarea {
+    resize: vertical; }
+  .contact-form button {
+    padding: 0.65rem 1rem;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    font-weight: 700;
+    cursor: pointer; }
+  .contact-form output {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+    font-size: 0.85rem; }
+
+.contact-widget {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 5; }
+  .contact-widget summary {
+    width: fit-content;
+    margin-left: auto;
+    padding: 0.65rem 1.1rem;
+    border: 1px solid white;
+    border-radius: 2rem;
+    background: #292e33;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 12px #0003; }
+
+.chat-panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.6rem);
+  width: 19rem;
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100dvh - 5rem);
+  overflow-y: auto;
+  padding: 1.1rem;
+  border: 1px solid #d4d7da;
+  border-top: 3px solid #ee543b;
+  border-radius: 10px;
+  background: white;
+  color: #17191b;
+  box-shadow: 0 6px 28px #0003; }
+  .chat-panel h2 {
+    margin: 0;
+    font-size: 1.35rem; }
+
+@media (min-width: 650px) {
+  .site-footer {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
 * {
   box-sizing: border-box; }
 
@@ -462,3 +552,5 @@ button, input, textarea, select {
   .content-section h2,
   .site-footer h2 {
     font-size: 3.6rem; } }
+
+/* Project Section --My additional content achievements*/

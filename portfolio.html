@@ -106,8 +106,8 @@
         </aside>
       </section>
 
-      <section class="content-section skills" aria-labelledby="skills-title">
-        <h2 id="skills-title">What I build</h2>
+      <section class="content-section skills" id="projects" aria-labelledby="skills-title">
+        <h2 id="skills-title">What I’ve Built</h2>
 
         <div class="skills-grid">
           <article>
@@ -125,16 +125,103 @@
             <p>MySQL tables that connect students, classes, attendance entries and payments.</p>
           </article>
         </div>
-      </section>
 
-      <!-- TASK 4: PROJECTS //my additional content -->
+      </section>   
+       
     </main>
+    <footer class="site-footer" id="contact">
+      <div class="footer-intro">
+        <p class="eyebrow">Ready to talk?</p>
+        <h2>Contact Me</h2>
+        <p>
+          Have a web application in mind? Tell me who will use it
+          and what you would like them to be able to do.
+        </p>
+      </div>
 
+      <form class="contact-form">
+        <label>
+          Your name
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+
+        <label>
+          Email address
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+
+        <label>
+          Your message
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+
+        <button type="submit">Preview message</button>
+        <output aria-live="polite"></output>
+      </form>
+
+      <small>
+        Verlaine Ntengang · Software Development Portfolio<br>
+        @Powered by <a href="https://icons8.com/">V.D.N</a>
+      </small>
+    </footer>
+
+    <details class="contact-widget">
+        <summary>Contact Me</summary>
+
+        <form class="contact-form chat-panel">
+          <h2>Start a conversation</h2>
+
+          <label>
+            Contact option
+            <select name="channel">
+              <option>WhatsApp</option>
+              <option>Email</option>
+              <option>Leave a message</option>
+            </select>
+          </label>
+
+          <label>
+            Your message
+            <textarea name="message" rows="3"
+                      placeholder="What would you like to build?"
+                      required></textarea>
+          </label>
+
+          <button type="submit">Preview draft</button>
+          <output aria-live="polite"></output>
+        </form>
+      </details>
     <!-- TASK 5: FOOTER -->
   </div>
 
   <!-- TASK 5: FLOATING CONTACT BOX // my additional content -->
+   
 
+        <dialog class="project-dialog" id="project-dialog" aria-labelledby="detail-title">
+        <div class="project-dialog-body">
+          <div class="detail-heading">
+            <div>
+              <p class="slide-category">School management system</p>
+              <h2 id="detail-title"></h2>
+            </div>
+
+            <form method="dialog">
+              <button class="detail-close" aria-label="Close project details" autofocus>×</button>
+            </form>
+          </div>
+
+          <p id="detail-description"></p>
+
+          <figure>
+            <img id="detail-image" alt="">
+            <figcaption>Interface demonstration using fictional school records.</figcaption>
+          </figure>
+
+          <a id="detail-original" target="_blank" rel="noopener">
+            Open full-size screenshot ↗
+          </a>
+        </div>
+      </dialog>
   <script>
     const drawer = document.querySelector("#drawer");
     const menuButton = document.querySelector(".menu-button");
@@ -159,9 +246,27 @@
 
       if (outside) drawer.close();
     });
-
+   
     // TASK 5: MESSAGE PREVIEW
-    
+    document.querySelectorAll(".contact-form").forEach((form) => {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const data = new FormData(form);
+    const message = data.get("message").trim();
+    const output = form.querySelector("output");
+
+    if (!message) {
+      output.textContent = "Please enter a message.";
+      form.elements.message.focus();
+      return;
+    }
+
+    const channel = data.get("channel") || "Email";
+    output.textContent =
+      `${channel} preview: ${message}\nYour draft stays on this page.`;
+  });
+});
   </script>
 </body>
 </html>
