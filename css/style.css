@@ -330,3 +330,135 @@ button, input, textarea, select {
 :focus-visible {
   outline: 3px solid #1875b8;
   outline-offset: 3px; }
+
+/* Portfolio Page Styles */
+.portfolio-page {
+  color: #17191b;
+  background: white; }
+
+.content-section {
+  padding: 3.5rem 7%; }
+
+.portfolio-page h1 {
+  margin-bottom: 1rem;
+  font-size: 3.2rem;
+  line-height: 1; }
+
+.content-section h2,
+.site-footer h2 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  line-height: 1.08; }
+
+.hero {
+  display: grid;
+  align-items: center;
+  background: #dfe3e6 url("../images/vbbb.jpg") center/cover; }
+
+.hero-copy {
+  padding: 3rem 8%; }
+  .hero-copy p {
+    max-width: 32rem; }
+
+.hero-photo {
+  align-self: end;
+  width: 100%;
+  max-height: 35rem;
+  object-fit: contain; }
+
+.orange-circle {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  background: #ee543b; }
+
+.eyebrow {
+  margin-bottom: 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase; }
+
+.action-link {
+  display: inline-block;
+  padding: 0.75rem 1.35rem;
+  color: white;
+  background: #17191b;
+  text-decoration: none; }
+  .action-link:hover {
+    background: #363b40; }
+
+.profile,
+.skills > h2 {
+  text-align: center; }
+
+.profile-grid,
+.skills-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2.5rem; }
+  .profile-grid article,
+  .skills-grid article {
+    text-align: left; }
+
+.profile-photo {
+  width: 11rem;
+  height: 11rem;
+  margin: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top; }
+
+.toolkit {
+  margin: 0; }
+  .toolkit dt {
+    font-weight: 700; }
+  .toolkit dd {
+    margin: 0 0 0.7rem; }
+
+.section-intro {
+  max-width: 45rem;
+  margin-bottom: 1.5rem; }
+
+.about-photo {
+  width: 100%;
+  max-height: 34rem;
+  object-fit: cover; }
+
+.about-note {
+  position: relative;
+  width: 88%;
+  max-width: 24rem;
+  margin: -1.5rem 0 0 auto;
+  padding: 1.4rem;
+  color: #17191b;
+  background: #ee543b; }
+  .about-note p {
+    margin-bottom: 0; }
+
+.skills {
+  background: #e1e6ea; }
+
+.skills-grid article {
+  padding-top: 1rem;
+  border-top: 3px solid #ee543b; }
+
+@media (min-width: 650px) {
+  .hero {
+    grid-template-columns: 1.1fr 1fr; }
+  .profile-grid,
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .profile-grid {
+    align-items: center; }
+  .content-section {
+    padding-block: 5rem; } }
+
+@media (min-width: 950px) {
+  .portfolio-page h1 {
+    font-size: 5.5rem; }
+  .content-section h2,
+  .site-footer h2 {
+    font-size: 3.6rem; } }
